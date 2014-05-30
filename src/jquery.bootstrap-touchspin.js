@@ -514,6 +514,10 @@
           return;
         }
 
+        if( typeof val == "string") {
+          val = val.replace(",", ".");
+        }
+
         parsedval = parseFloat(val);
 
         if (isNaN(parsedval)) {
@@ -579,7 +583,8 @@
           stopSpin();
         }
 
-        elements.input.val(Number(value).toFixed(settings.decimals));
+        var valueLocale = Number(value).toFixed(settings.decimals).replace(".",",");
+        elements.input.val(valueLocale);
 
         if (initvalue !== value) {
           originalinput.trigger('change');
@@ -605,7 +610,8 @@
           stopSpin();
         }
 
-        elements.input.val(value.toFixed(settings.decimals));
+        var valueLocale = Number(value).toFixed(settings.decimals).replace(".",",");
+        elements.input.val(valueLocale);
 
         if (initvalue !== value) {
           originalinput.trigger('change');
