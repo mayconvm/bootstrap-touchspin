@@ -504,6 +504,8 @@
       function _checkValue() {
         var val, parsedval, returnval;
 
+        // console.group("-----------------------");
+
         val = originalinput.val();
 
         if (val === '') {
@@ -514,6 +516,8 @@
           return;
         }
 
+        // console.log("val", typeof val, val );
+
         if( typeof val == "string") {
           val = val.replace(",", ".");
         }
@@ -521,10 +525,13 @@
         parsedval = parseFloat(val);
 
         if (isNaN(parsedval)) {
-          parsedval = 0;
+          parsedval = 0.00;
         }
 
         returnval = parsedval;
+
+        // console.log("val", typeof val, val );
+        // console.log("parsedval", typeof parsedval, parsedval );
 
         if (parsedval.toString() !== val) {
           returnval = parsedval;
@@ -545,9 +552,6 @@
           originalinput.trigger('change');
         }
 
-        // console.group("-----------------------");
-        // console.log("val", typeof val, val );
-        // console.log("parsedval", typeof parsedval, parsedval );
         // console.log("returnval", typeof returnval, returnval );
         // console.groupEnd("-----------------------");
       }
