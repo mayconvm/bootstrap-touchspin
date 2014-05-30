@@ -564,18 +564,40 @@
         }
       }
 
+      function _getValue() {
+        var value = elements.input.val();
+
+        if(typeof value == "string") {
+          value = value.replace(",", ".");
+        }
+
+        return parseFloat(value);
+      }
+
       function upOnce() {
         _checkValue();
 
-        value = parseFloat(elements.input.val());
+        // value = parseFloat(elements.input.val());
+        value = _getValue();
         if (isNaN(value)) {
           value = 0;
         }
+
+        // console.group("ANTES-----------------------");
+        // console.log("value", typeof value, value );
+        // console.log("elements.input.val()", typeof elements.input.val(), elements.input.val() );
+        // console.groupEnd("-----------------------");
 
         var initvalue = value,
             boostedstep = _getBoostedStep();
 
         value = value + boostedstep;
+
+        // console.group("DEPOIS-----------------------");
+        // console.log("value", typeof value, value );
+        // console.log("boostedstep", typeof boostedstep, boostedstep );
+        // console.log("settings.max", typeof settings.max, settings.max );
+        // console.groupEnd("-----------------------");
 
         if (value > settings.max) {
           value = settings.max;
@@ -594,7 +616,8 @@
       function downOnce() {
         _checkValue();
 
-        value = parseFloat(elements.input.val());
+        // value = parseFloat(elements.input.val());
+        value = _getValue();
         if (isNaN(value)) {
           value = 0;
         }
