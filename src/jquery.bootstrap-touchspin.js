@@ -544,6 +544,12 @@
           originalinput.val(returnval);
           originalinput.trigger('change');
         }
+
+        // console.group("-----------------------");
+        // console.log("val", typeof val, val );
+        // console.log("parsedval", typeof parsedval, parsedval );
+        // console.log("returnval", typeof returnval, returnval );
+        // console.groupEnd("-----------------------");
       }
 
       function _getBoostedStep() {
@@ -585,11 +591,14 @@
 
         // console.group("ANTES-----------------------");
         // console.log("value", typeof value, value );
-        // console.log("elements.input.val()", typeof elements.input.val(), elements.input.val() );
         // console.groupEnd("-----------------------");
 
         var initvalue = value,
             boostedstep = _getBoostedStep();
+
+        if (isNaN(boostedstep)) {
+          boostedstep = 1;
+        }
 
         value = value + boostedstep;
 
@@ -624,6 +633,10 @@
 
         var initvalue = value,
             boostedstep = _getBoostedStep();
+
+        if (isNaN(boostedstep)) {
+          boostedstep = 1;
+        }
 
         value = value - boostedstep;
 
