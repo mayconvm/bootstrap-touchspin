@@ -497,7 +497,7 @@
           case 'ceil':
             return (Math.ceil(value / settings.step) * settings.step).toFixed(settings.decimals);
           default:
-            return value;
+            return value.toFixed(2);
         }
       }
 
@@ -546,6 +546,9 @@
         }
 
         returnval = _forcestepdivisibility(returnval);
+
+        // Adiciona "," denovo
+        returnval = (returnval+"").replace(".",",");
 
         if (Number(val).toString() !== returnval.toString()) {
           originalinput.val(returnval);
