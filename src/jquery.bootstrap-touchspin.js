@@ -458,6 +458,14 @@
             upOnce();
           }
         });
+
+        elements.up.on('contextmenu',function(){
+          return false;
+        });
+        elements.down.on('contextmenu',function(){
+          return false;
+        });
+
       }
 
       function _bindEventsInterface() {
